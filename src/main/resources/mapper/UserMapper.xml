@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.ims.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.yang.ims.model.User">
+    <result column="pkid" jdbcType="VARCHAR" property="pkId"/>
+    <result column="password" jdbcType="VARCHAR" property="password"/>
+    <result column="telphone" jdbcType="VARCHAR" property="telphone"/>
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="personal_sign" jdbcType="VARCHAR" property="personalSign" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    pkid, password, telphone, nick_name, personal_sign
+  </sql>
+  <select id="selectOne" resultMap="BaseResultMap" parameterType="com.yang.ims.model.User">
+    select
+      <include refid="Base_Column_List"/>
+    from tb_user where telphone = #{telphone}
+  </select>
+</mapper>
