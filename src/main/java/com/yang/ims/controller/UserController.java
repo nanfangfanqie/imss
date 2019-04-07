@@ -18,7 +18,9 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    
+    /**
+     * 点击VCS
+     */
     @Resource
     private UserService userService;
 
