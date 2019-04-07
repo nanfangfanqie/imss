@@ -18,7 +18,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
+    
     @Resource
     private UserService userService;
 
