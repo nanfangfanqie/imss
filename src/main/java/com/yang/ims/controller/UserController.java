@@ -3,35 +3,38 @@ package com.yang.ims.controller;
 import com.yang.ims.model.User;
 import com.yang.ims.service.UserService;
 import com.yang.ims.vo.MessageResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.UUID;
 
 /**
  * @author yangchen
  * on 2019/4/7 16:01
  */
 @RestController
+@SessionAttributes("veri")
 @RequestMapping("/user")
 public class UserController {
-    /**
-     * 点击VCS
-     */
     @Resource
     private UserService userService;
 
+    /**
+     * 登录
+     * @return
+     */
     @RequestMapping("/login")
     @ResponseBody
-
-    public String login(){
-        User user = new User();
-        user.setTelphone("18860957075");
-        return userService.login(user).toString();
+    public MessageResult login(User user){
+        return userService.login(user);
     }
 
-
+    /**
+     * 注册
+     * @param user
+     * @return
+     */
+    @RequestMapping("/register")
+    public MessageResult register(User user){
+        return userService.register(user);
+    }
 }

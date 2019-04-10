@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yang.ims.dao.UserDao">
+<mapper namespace="com.yang.ims.dao.userDao">
   <resultMap id="BaseResultMap" type="com.yang.ims.model.User">
     <result column="pkid" jdbcType="VARCHAR" property="pkId"/>
     <result column="password" jdbcType="VARCHAR" property="password"/>
@@ -9,12 +9,27 @@
     <result column="personal_sign" jdbcType="VARCHAR" property="personalSign" />
 
   </resultMap>
-  <sql id="Base_Column_List">
-    pkid, password, telphone, nick_name, personal_sign
+  <sql id="column">
+    pkid, password,telphone, nick_name, personal_sign
+  </sql>
+
+  <sql id="obj">
+    pkId,password,telphone,nickName,personalSign
   </sql>
   <select id="selectOne" resultMap="BaseResultMap" parameterType="com.yang.ims.model.User">
     select
-      <include refid="Base_Column_List"/>
+      <include refid="column"/>
     from tb_user where telphone = #{telphone}
   </select>
+  <select id="selectAll" resultType="com.yang.ims.model.User">
+
+  </select>
+
+
+  <insert id="insertOne"  parameterType="com.yang.ims.model.User">
+    insert into tb_user
+    (<include refid="column"/> )
+    values
+    (<include refid="obj"/>)
+  </insert>
 </mapper>

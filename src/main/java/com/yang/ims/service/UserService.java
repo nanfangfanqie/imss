@@ -15,4 +15,11 @@ public interface UserService {
      * @return
      */
     MessageResult login(User user);
+
+    /**
+     * 用户注册
+     * @param user
+     * @return
+     */
+    MessageResult register(User user);
 }

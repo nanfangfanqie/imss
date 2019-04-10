@@ -1,40 +1,35 @@
 package com.yang.ims.vo;
 
+import java.io.Serializable;
+
 /**
  * @author yangchen
  * on 2019/4/7 16:10
  */
-public class MessageResult {
+public class MessageResult<T> implements Serializable{
     private boolean status;
-    private Object data;
-    private String Message;
+    private T data;
 
     public MessageResult(boolean status) {
         this.status = status;
     }
 
-    public MessageResult(boolean status, Object data) {
+    public MessageResult(boolean status, T data) {
         this.status = status;
         this.data = data;
     }
 
-    public MessageResult(boolean status, String message) {
-        this.status = status;
-        Message = message;
+    public boolean isStatus() {
+        return status;
     }
 
-    public MessageResult(boolean status, Object data, String message) {
+    public void setStatus(boolean status) {
         this.status = status;
-        this.data = data;
-        Message = message;
     }
 
-    @Override
-    public String toString() {
-        return "MessageResult{" +
-                "status=" + status +
-                ", data=" + data.toString() +
-                ", Message='" + Message + '\'' +
-                '}';
+    public Object getData() {
+        return data;
     }
+
+
 }
