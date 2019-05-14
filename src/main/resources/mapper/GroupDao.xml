@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.ims.dao.GroupDao">
+  <resultMap id="BaseResultMap" type="com.yang.ims.model.FriendInfo">
+    <result column="mid" property="mid"/>
+    <result column="fid" property="fid"/>
+    <result column="ind" property="index"/>
+  </resultMap>
+
+  <sql id="column">
+    mid,fid,ind
+  </sql>
+  <select id="selectOne" resultMap="BaseResultMap" parameterType="com.yang.ims.model.FriendInfo">
+    select <include refid="column"/>
+    from friend
+    where mid = '${mid}'
+    and fid like '${fid}'
+  </select>
+  <insert id="insert" parameterType="com.yang.ims.model.FriendInfo">
+    insert into friend(mid, fid) value (#{mid},#{fid})
+  </insert>
+
+  <update id="update" parameterType="com.yang.ims.model.FriendInfo">
+    update friend set ind = #{index}
+    where mid = '${mid}'
+    and fid = '${fid}'
+  </update>
+
+</mapper>

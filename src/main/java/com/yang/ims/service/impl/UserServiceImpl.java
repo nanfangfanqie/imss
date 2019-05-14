@@ -24,16 +24,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public MessageResult login(User user) {
-        User userFromDb = userDao.selectOne(user);
-        if (null!=userFromDb){
-            if (user.getPassword().equals(userFromDb.getPassword())){
-                return new MessageResult<>(true, userFromDb);
-            }else {
-                return new MessageResult<>(false, "密码错误");
-            }
-        }else {
-            return new MessageResult<>(false, "不存在的用户");
-        }
+//        User userFromDb = userDao.selectOne(user);
+//        if (null!=userFromDb){
+//            if (user.getPassword().equals(userFromDb.getPassword())){
+//                return new MessageResult<>(true, userFromDb);
+//            }else {
+//                return new MessageResult<>(false, "密码错误");
+//            }
+//        }else {
+//            return new MessageResult<>(false, "不存在的用户");
+//        }
+        return null;
     }
 
     @Override
